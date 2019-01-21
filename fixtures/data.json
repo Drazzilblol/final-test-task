@@ -1,22 +1,19 @@
 {
-  "validData": {
-    "name": "TestUser",
-    "address": "12345qwer12345",
-    "email": "testcourses999@gmail.com"
+  "userData": {
+    "name": "test",
+    "address": "test",
+    "email": "test@gmail.com"
   },
-  "dataWithInvalidName": {
-    "name": "Te",
-    "address": "12345qwer12345",
-    "email": "testcourses999@gmail.com"
+  "editData": {
+    "name": "test1",
+    "address": "test1",
+    "email": "test1@gmail.com"
   },
-  "dataWithInvalidEmail": {
-    "name": "TestUser",
-    "address": "12345qwer12345",
-    "email": "testcourses999"
-  },
-  "invalidEditData": {
+  "invalidData": {
     "name": "User1",
     "address": "Address1",
     "email": "user1@abc.com"
-  }
+  },
+  "invalidName": "te",
+  "invalidEmail": "test"
 }

@@ -14,9 +14,15 @@ var registrationPage = function () {
         submitButton.click();
     };
 
-    this.isSubmitButtonEnabled = function () {
-        return submitButton.getAttribute('disabled').then(function (result) {
-            return result === null;
+    this.isNameValid = function () {
+        return nameField.getAttribute('class').then(function (result) {
+            return !(result.indexOf('ng-invalid') !== -1);
+        });
+    };
+
+    this.isEmailValid = function () {
+        return emailField.getAttribute('class').then(function (result) {
+            return !(result.indexOf('ng-invalid') !== -1);
         });
     };
 
