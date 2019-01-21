@@ -60,13 +60,4 @@ describe('index page', function () {
         registrationPage.submitButtonClick();
         expect(userListPage.isUserExist(registrationData.validData.name)).toBe(true);
     });
-
-    it('should not allow edit user name to existing name', function () {
-        userListPage.editLastUser();
-        registrationPage.setNameFieldText(registrationData.invalidEditData.name);
-        registrationPage.setAddressFieldText(registrationData.invalidEditData.address);
-        registrationPage.setEmailFieldText(registrationData.invalidEditData.email);
-        registrationPage.submitButtonClick();
-        expect(userListPage.getUsersWithSameName(registrationData.invalidEditData.name)).toBe(1);
-    });
 });
