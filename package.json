@@ -1,0 +1,17 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "conf.js",
+
+  "devDependencies": {
+    "allure-commandline": "^2.8.1",
+    "jasmine-allure-reporter": "^1.0.2",
+    "protractor": "^5.4.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
