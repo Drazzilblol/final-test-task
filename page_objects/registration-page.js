@@ -6,6 +6,18 @@ var registrationPage = function () {
     let submitButton = registrationForm.element(by.id('submit'));
     let resetButton = registrationForm.element(by.id('reset'));
 
+    this.isSubmitButtonEnabled = function () {
+        return submitButton.getAttribute('disabled').then(function (result) {
+            return result === null;
+        });
+    };
+
+    this.isResetButtonEnabled = function () {
+        return resetButton.getAttribute('disabled').then(function (result) {
+            return result === null;
+        });
+    };
+
     this.resetButtonClick = function () {
         resetButton.click();
     };
@@ -49,7 +61,7 @@ var registrationPage = function () {
         emailField.sendKeys(text);
     };
 
-    this.getEmaiFieldText = function () {
+    this.getEmailFieldText = function () {
         return emailField.getAttribute('value');
     };
 };

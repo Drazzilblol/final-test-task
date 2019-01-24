@@ -22,9 +22,11 @@ var userListPage = function () {
     };
 
     this.isUserExist = function (text) {
-        return userListTable.all(by.cssContainingText('td', text)).first().getText().then(function (result) {
-            return result.indexOf(text) !== -1;
-        });
+        return userListTable.all(by.cssContainingText('td', text))
+            .count()
+            .then(function (size) {
+                return size > 0;
+            });
     };
 };
 
