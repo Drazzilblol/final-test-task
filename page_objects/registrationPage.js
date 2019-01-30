@@ -64,6 +64,12 @@ var registrationPage = function () {
     this.getEmailFieldText = function () {
         return emailField.getAttribute('value');
     };
+
+    this.isRegistrationFormCleared = function () {
+        expect(this.getNameFieldText()).toEqual('');
+        expect(this.getAddressFieldText()).toEqual('');
+        expect(this.getEmailFieldText()).toEqual('');
+    }
 };
 
 module.exports = new registrationPage();

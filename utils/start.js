@@ -13,7 +13,7 @@ updateWebdriverManager.on('close', function (wmUpdateExitCode) {
         shell: true
     });
     setTimeout(function () {
-        tests = spawn('node node_modules/protractor/bin/protractor conf.js', { // замените название конфигурационного файла на свое, если оно отличается от предложенного
+        tests = spawn('node node_modules/protractor/bin/protractor conf.js --suite registration,userList', { // замените название конфигурационного файла на свое, если оно отличается от предложенного
             stdio: 'inherit',
             shell: true
         });

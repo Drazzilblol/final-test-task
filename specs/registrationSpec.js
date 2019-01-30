@@ -1,7 +1,7 @@
-describe('index page', function () {
-    let registrationPage = require('../page_objects/registration-page.js');
-    let userListPage = require('../page_objects/user-list-page.js');
-    let modalDialogs = require('../page_objects/modal-dialogs.js');
+describe('registration form', function () {
+    let registrationPage = require('../page_objects/registrationPage.js');
+    let userListPage = require('../page_objects/userListPage.js');
+    let modalDialogs = require('../page_objects/modalDialogs.js');
     let navigator = require('../utils/navigator.js');
     let registrationData = require('../fixtures/data.json');
 
@@ -19,7 +19,7 @@ describe('index page', function () {
         registrationPage.setEmailFieldText(registrationData.userData.email);
         expect(registrationPage.isResetButtonEnabled()).toBe(true);
         registrationPage.resetButtonClick();
-        isRegistrationFormCleared();
+        registrationPage.isRegistrationFormCleared();
     });
 
     it('should check name and email fields validation', function () {
@@ -37,7 +37,7 @@ describe('index page', function () {
         registrationPage.setEmailFieldText(registrationData.invalidData.email);
         expect(registrationPage.isSubmitButtonEnabled()).toBe(true);
         registrationPage.submitButtonClick();
-        isRegistrationFormCleared();
+        registrationPage.isRegistrationFormCleared();
         expect(userListPage.getUserListSize()).toBe(3);
     });
 
@@ -48,34 +48,6 @@ describe('index page', function () {
         expect(registrationPage.isSubmitButtonEnabled()).toBe(true);
         registrationPage.submitButtonClick();
         expect(userListPage.isUserExist(registrationData.userData.name)).toBe(true);
-        isRegistrationFormCleared();
+        registrationPage.isRegistrationFormCleared();
     });
-
-    it('should edit user', function () {
-        expect(userListPage.getUserListSize()).toBeGreaterThan(0);
-        userListPage.editLastUser();
-        expect(registrationPage.getAddressFieldText()).toEqual(registrationData.userData.address);
-        expect(registrationPage.getNameFieldText()).toEqual(registrationData.userData.name);
-        expect(registrationPage.getEmailFieldText()).toEqual(registrationData.userData.email);
-        registrationPage.setNameFieldText(registrationData.editData.name);
-        registrationPage.setAddressFieldText(registrationData.editData.address);
-        registrationPage.setEmailFieldText(registrationData.editData.email);
-        registrationPage.submitButtonClick();
-        expect(userListPage.isUserExist(registrationData.editData.name)).toBe(true);
-        isRegistrationFormCleared();
-    });
-
-    it('should remove user', function () {
-        expect(userListPage.getUserListSize()).toBeGreaterThan(0);
-        userListPage.removeLastUser();
-        expect(modalDialogs.isDeleteUserDialogVisible()).toBe(true);
-        modalDialogs.confirmDeleteUser();
-        expect(userListPage.isUserExist(registrationData.editData.name)).toBe(false);
-    });
-
-    let isRegistrationFormCleared = function () {
-        expect(registrationPage.getNameFieldText()).toEqual('');
-        expect(registrationPage.getAddressFieldText()).toEqual('');
-        expect(registrationPage.getEmailFieldText()).toEqual('');
-    }
 });

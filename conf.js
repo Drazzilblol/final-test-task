@@ -29,7 +29,13 @@ exports.config = {
     // Spec patterns are relative to the configuration file location passed
     // to protractor (in this example conf.js).
     // They may include glob patterns.
-    specs: ['specs/index-spec.js'],
+    // specs: ['specs/registrationSpec.js'],
+
+    suites: {
+        registration: 'specs/registrationSpec.js',
+        userList: 'specs/userListSpec.js'
+
+    },
     allScriptsTimeout: 60000,
 
     // Options to be passed to Jasmine-node.
