@@ -42,7 +42,7 @@ var registrationPage = function () {
     this.isEmailValid = function () {
         return isFieldValid(emailField)
     };
-    
+
     let getFieldText = function (field) {
         return field.getAttribute('value');
     };

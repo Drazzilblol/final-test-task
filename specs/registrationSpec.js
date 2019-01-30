@@ -6,7 +6,7 @@ describe('registration form', function () {
     let registrationData = require('../fixtures/data.json');
 
     beforeAll(function () {
-        browser.get(navigator.getIndexUrl());
+        navigator.startApp();
     });
 
     beforeEach(function () {
