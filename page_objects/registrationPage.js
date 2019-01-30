@@ -6,16 +6,19 @@ var registrationPage = function () {
     let submitButton = registrationForm.element(by.id('submit'));
     let resetButton = registrationForm.element(by.id('reset'));
 
-    this.isSubmitButtonEnabled = function () {
-        return submitButton.getAttribute('disabled').then(function (result) {
+    let isButtonEnabled = function (button) {
+        return button.getAttribute('disabled').then(function (result) {
             return result === null;
         });
     };
 
+    this.isSubmitButtonEnabled = function () {
+        return isButtonEnabled(submitButton);
+    };
+
     this.isResetButtonEnabled = function () {
-        return resetButton.getAttribute('disabled').then(function (result) {
-            return result === null;
-        });
+        return isButtonEnabled(resetButton);
+
     };
 
     this.resetButtonClick = function () {
@@ -26,43 +29,51 @@ var registrationPage = function () {
         submitButton.click();
     };
 
-    this.isNameValid = function () {
-        return nameField.getAttribute('class').then(function (result) {
+    let isFieldValid = function (field) {
+        return field.getAttribute('class').then(function (result) {
             return !(result.indexOf('ng-invalid') !== -1);
         });
+    };
+
+    this.isNameValid = function () {
+        return isFieldValid(nameField);
     };
 
     this.isEmailValid = function () {
-        return emailField.getAttribute('class').then(function (result) {
-            return !(result.indexOf('ng-invalid') !== -1);
-        });
+        return isFieldValid(emailField)
+    };
+    
+    let getFieldText = function (field) {
+        return field.getAttribute('value');
+    };
+
+    let setFieldText = function (field, text) {
+        field.clear();
+        field.sendKeys(text);
     };
 
     this.setNameFieldText = function (text) {
-        nameField.clear();
-        nameField.sendKeys(text);
+        setFieldText(nameField, text);
     };
 
     this.getNameFieldText = function () {
-       return nameField.getAttribute('value');
+       return getFieldText(nameField)
     };
 
     this.setAddressFieldText = function (text) {
-        addressField.clear();
-        addressField.sendKeys(text);
+        setFieldText(addressField, text);
     };
 
     this.getAddressFieldText = function () {
-        return addressField.getAttribute('value');
+        return getFieldText(addressField);
     };
 
     this.setEmailFieldText = function (text) {
-        emailField.clear();
-        emailField.sendKeys(text);
+        setFieldText(emailField, text);
     };
 
     this.getEmailFieldText = function () {
-        return emailField.getAttribute('value');
+        return getFieldText(emailField);
     };
 
     this.isRegistrationFormCleared = function () {
