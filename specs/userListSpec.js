@@ -28,6 +28,15 @@ describe('user list', function () {
         expect(registrationPage.getSubmitButtonText()).toEqual(addButtonText);
     });
 
+    it('should cancel remove user', function () {
+        expect(userListPage.getUserListSize()).toBeGreaterThan(0);
+        userListPage.removeLastUser();
+        expect(modalDialogs.isDeleteUserDialogVisible()).toBe(true);
+        modalDialogs.cancelDeleteUser();
+        expect(userListPage.isUserExist(registrationData.editData.name)).toBe(true);
+        expect(modalDialogs.isDeleteUserDialogVisible()).toBe(false);
+    });
+
     it('should remove user', function () {
         expect(userListPage.getUserListSize()).toBeGreaterThan(0);
         userListPage.removeLastUser();
