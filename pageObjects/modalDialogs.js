@@ -1,4 +1,4 @@
-var modalDialogs = function () {
+let modalDialogs = function () {
 
     let deleteUserDialog = element(by.css('.modal-dialog '));
     let deleteUserDialogOkButton = deleteUserDialog.element(by.id('ok'));

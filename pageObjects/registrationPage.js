@@ -1,4 +1,4 @@
-var registrationPage = function () {
+let registrationPage = function () {
     let registrationForm = element(by.name('myForm'));
     let nameField = registrationForm.element(by.id('uname'));
     let addressField = registrationForm.element(by.id('address'));

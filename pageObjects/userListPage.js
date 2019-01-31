@@ -1,4 +1,4 @@
-var userListPage = function () {
+let userListPage = function () {
     let userListTable = element(by.tagName('tbody'));
     let lastUser = userListTable.all(by.tagName('tr'))
         .last();
