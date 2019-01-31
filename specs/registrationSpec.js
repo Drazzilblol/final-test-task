@@ -1,7 +1,6 @@
 describe('registration form', function () {
-    let registrationPage = require('../page_objects/registrationPage.js');
-    let userListPage = require('../page_objects/userListPage.js');
-    let modalDialogs = require('../page_objects/modalDialogs.js');
+    let registrationPage = require('../pageObjects/registrationPage.js');
+    let userListPage = require('../pageObjects/userListPage.js');
     let navigator = require('../utils/navigator.js');
     let registrationData = require('../fixtures/data.json');
 
