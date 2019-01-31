@@ -27,6 +27,7 @@ describe('user list', function () {
         expect(userListPage.getUserListSize()).toBeGreaterThan(0);
         userListPage.removeLastUser();
         expect(modalDialogs.isDeleteUserDialogVisible()).toBe(true);
+        expect(modalDialogs.isDeleteDialogContainUserName(registrationData.editData.name)).toBe(true);
         modalDialogs.confirmDeleteUser();
         expect(userListPage.isUserExist(registrationData.editData.name)).toBe(false);
     });

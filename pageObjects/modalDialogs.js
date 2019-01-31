@@ -10,6 +10,14 @@ var modalDialogs = function () {
     this.confirmDeleteUser = function () {
         return deleteUserDialogOkButton.click();
     };
+
+    this.isDeleteDialogContainUserName = function (name) {
+        return deleteUserDialog.all(by.cssContainingText('.modal-body', name))
+            .count()
+            .then(function (size) {
+            return size > 0;
+        });
+    };
 };
 
 module.exports = new modalDialogs();
