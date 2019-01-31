@@ -21,12 +21,17 @@ let registrationPage = function () {
 
     };
 
+    let buttonClick = function (button) {
+        button.click()
+    };
+
+
     this.resetButtonClick = function () {
-        resetButton.click();
+        buttonClick(resetButton);
     };
 
     this.submitButtonClick = function () {
-        submitButton.click();
+        buttonClick(submitButton);
     };
 
     let isFieldValid = function (field) {
