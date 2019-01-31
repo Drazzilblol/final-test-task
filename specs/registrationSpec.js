@@ -30,16 +30,6 @@ describe('registration form', function () {
         registrationPage.resetButtonClick();
     });
 
-    it('should not add user with same name', function () {
-        registrationPage.setNameFieldText(registrationData.invalidData.name);
-        registrationPage.setAddressFieldText(registrationData.invalidData.address);
-        registrationPage.setEmailFieldText(registrationData.invalidData.email);
-        expect(registrationPage.isSubmitButtonEnabled()).toBe(true);
-        registrationPage.submitButtonClick();
-        registrationPage.isRegistrationFormCleared();
-        expect(userListPage.getUserListSize()).toBe(3);
-    });
-
     it('should add user', function () {
         registrationPage.setNameFieldText(registrationData.userData.name);
         registrationPage.setAddressFieldText(registrationData.userData.address);
