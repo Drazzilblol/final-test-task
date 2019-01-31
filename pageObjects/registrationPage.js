@@ -43,8 +43,12 @@ var registrationPage = function () {
         return isFieldValid(emailField)
     };
 
-    let getFieldText = function (field) {
+    let getElementText = function (field) {
         return field.getAttribute('value');
+    };
+
+    this.getSubmitButtonText = function () {
+        return getElementText(submitButton);
     };
 
     let setFieldText = function (field, text) {
@@ -57,7 +61,7 @@ var registrationPage = function () {
     };
 
     this.getNameFieldText = function () {
-       return getFieldText(nameField)
+        return getElementText(nameField)
     };
 
     this.setAddressFieldText = function (text) {
@@ -65,7 +69,7 @@ var registrationPage = function () {
     };
 
     this.getAddressFieldText = function () {
-        return getFieldText(addressField);
+        return getElementText(addressField);
     };
 
     this.setEmailFieldText = function (text) {
@@ -73,7 +77,7 @@ var registrationPage = function () {
     };
 
     this.getEmailFieldText = function () {
-        return getFieldText(emailField);
+        return getElementText(emailField);
     };
 
     this.isRegistrationFormCleared = function () {

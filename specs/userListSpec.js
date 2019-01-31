@@ -4,6 +4,8 @@ describe('user list', function () {
     let modalDialogs = require('../pageObjects/modalDialogs.js');
     let navigator = require('../utils/navigator.js');
     let registrationData = require('../fixtures/data.json');
+    let updateButtonText = 'Update';
+    let addButtonText = 'Add';
 
     beforeEach(function () {
         navigator.goToIndexPage();
@@ -15,12 +17,15 @@ describe('user list', function () {
         expect(registrationPage.getAddressFieldText()).toEqual(registrationData.userData.address);
         expect(registrationPage.getNameFieldText()).toEqual(registrationData.userData.name);
         expect(registrationPage.getEmailFieldText()).toEqual(registrationData.userData.email);
+        expect(registrationPage.getSubmitButtonText()).toEqual(updateButtonText);
         registrationPage.setNameFieldText(registrationData.editData.name);
         registrationPage.setAddressFieldText(registrationData.editData.address);
         registrationPage.setEmailFieldText(registrationData.editData.email);
+        expect(registrationPage.isSubmitButtonEnabled()).toBe(true);
         registrationPage.submitButtonClick();
         expect(userListPage.isUserExist(registrationData.editData.name)).toBe(true);
         registrationPage.isRegistrationFormCleared();
+        expect(registrationPage.getSubmitButtonText()).toEqual(addButtonText);
     });
 
     it('should remove user', function () {
