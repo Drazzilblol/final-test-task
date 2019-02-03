@@ -34,7 +34,6 @@ exports.config = {
     suites: {
         registration: 'specs/registrationSpec.js',
         userList: 'specs/userListSpec.js'
-
     },
     allScriptsTimeout: 60000,
 
