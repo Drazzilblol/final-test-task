@@ -5,9 +5,11 @@ let modalDialogs = function () {
     let deleteUserDialogCancelButton = deleteUserDialog.last().element(by.id('cancel'));
 
     this.isDeleteUserDialogVisible = function () {
+        browser.manage().timeouts().implicitlyWait(1000);
         return deleteUserDialog
             .count()
             .then(function (size) {
+                browser.manage().timeouts().implicitlyWait(0);
                 return size > 0;
             });
     };
