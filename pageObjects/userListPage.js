@@ -1,9 +1,12 @@
 let userListPage = function () {
     let userListTable = element(by.tagName('tbody'));
-    let lastUser = userListTable.all(by.tagName('tr'))
-        .last();
-    let removeLastUserButton = lastUser.element(by.id('remove'));
-    let editLastUserButton = lastUser.element(by.id('edit'));
+    let userList = userListTable.all(by.tagName('tr'));
+    let lastUser = userList.last().all(by.tagName('td'));
+    let lastUserName = lastUser.first();
+    let lastUserAddress = lastUser.get(1);
+    let lastUserEmail = lastUser.get(2);
+    let removeLastUserButton = lastUser.last().element(by.id('remove'));
+    let editLastUserButton = lastUser.last().element(by.id('edit'));
 
     this.getUserListSize = function () {
         return userListTable.all(by.tagName('tr'))
@@ -11,6 +14,24 @@ let userListPage = function () {
             .then(function (size) {
                 return size;
             });
+    };
+
+    let getRowText = function (row) {
+        return row.getText().then(function (text) {
+            return text;
+        });
+    };
+
+    this.getLastUserNameRowText = function () {
+        return getRowText(lastUserName);
+    };
+
+    this.getLastUserEmailRowText = function () {
+        return getRowText(lastUserEmail);
+    };
+
+    this.getLastUserAddressRowText = function () {
+        return getRowText(lastUserAddress);
     };
 
     this.removeLastUser = function () {

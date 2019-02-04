@@ -5,6 +5,7 @@ let navigator = require('../utils/navigator.js');
 let registrationData = require('../fixtures/data.json');
 let updateButtonText = 'Update';
 let addButtonText = 'Add';
+let lastUserName;
 
 describe('Check user editing', function () {
     beforeAll(function () {
@@ -14,9 +15,9 @@ describe('Check user editing', function () {
 
     it('In the list of users, click the Edit button in the last user line', function () {
         userListPage.editLastUser();
-        expect(registrationPage.getAddressFieldText()).toEqual(registrationData.userData.address);
-        expect(registrationPage.getNameFieldText()).toEqual(registrationData.userData.name);
-        expect(registrationPage.getEmailFieldText()).toEqual(registrationData.userData.email);
+        expect(registrationPage.getAddressFieldText()).toEqual(userListPage.getLastUserAddressRowText());
+        expect(registrationPage.getNameFieldText()).toEqual(userListPage.getLastUserNameRowText());
+        expect(registrationPage.getEmailFieldText()).toEqual(userListPage.getLastUserEmailRowText());
         expect(registrationPage.getSubmitButtonText()).toEqual(updateButtonText);
     });
 
@@ -39,6 +40,7 @@ describe('Check cancel user deleting', function () {
     beforeAll(function () {
         navigator.goToIndexPage();
         expect(userListPage.getUserListSize()).toBeGreaterThan(0);
+        lastUserName = userListPage.getLastUserNameRowText()
     });
 
     it('In the list of users, click the Remove button in the last user line', function () {
@@ -48,7 +50,7 @@ describe('Check cancel user deleting', function () {
 
     it('Cancel deletion in the dialog by clicking the Cancel button', function () {
         modalDialogs.cancelDeleteUser();
-        expect(userListPage.isUserExist(registrationData.editData.name)).toBe(true);
+        expect(userListPage.isUserExist(lastUserName)).toBe(true);
         expect(modalDialogs.isDeleteUserDialogVisible()).toBe(false);
     });
 });
@@ -57,16 +59,17 @@ describe('Check user deleting', function () {
     beforeAll(function () {
         navigator.goToIndexPage();
         expect(userListPage.getUserListSize()).toBeGreaterThan(0);
+        lastUserName = userListPage.getLastUserNameRowText()
     });
 
     it('In the list of users, click the Remove button in the last user line', function () {
         userListPage.removeLastUser();
         expect(modalDialogs.isDeleteUserDialogVisible()).toBe(true);
-        expect(modalDialogs.isDeleteDialogContainUserName(registrationData.editData.name)).toBe(true);
+        expect(modalDialogs.isDeleteDialogContainUserName(lastUserName)).toBe(true);
     });
 
     it('Confirm deletion in the dialog by clicking the Ok button', function () {
         modalDialogs.confirmDeleteUser();
-        expect(userListPage.isUserExist(registrationData.editData.name)).toBe(false);
+        expect(userListPage.isUserExist(lastUserName)).toBe(false);
     });
 });
