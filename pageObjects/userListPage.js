@@ -9,17 +9,14 @@ let userListPage = function () {
     let editLastUserButton = lastUser.last().element(by.id('edit'));
 
     this.getUserListSize = function () {
-        return userListTable.all(by.tagName('tr'))
-            .count()
+        return userList.count()
             .then(function (size) {
                 return size;
             });
     };
 
     let getRowText = function (row) {
-        return row.getText().then(function (text) {
-            return text;
-        });
+        return row.getText();
     };
 
     this.getLastUserNameRowText = function () {
