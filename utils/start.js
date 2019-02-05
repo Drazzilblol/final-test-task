@@ -4,7 +4,7 @@ var updateWebdriverManager = spawn('node node_modules/protractor/bin/webdriver-m
     shell: true
 });
 updateWebdriverManager.on('close', function (wmUpdateExitCode) {
-    var waitForWebdriverStartTimeout = 2000;
+    var waitForWebdriverStartTimeout = 5000;
     var tests;
     if (wmUpdateExitCode !== 0) {
         process.exit(1);

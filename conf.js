@@ -1,7 +1,6 @@
 exports.config = {
     framework: 'jasmine2',
     onPrepare: function () {
-        browser.manage().timeouts().implicitlyWait(15000);
         var AllureReporter = require('jasmine-allure-reporter');
         jasmine.getEnv().addReporter(new AllureReporter({
             allureReport: {
@@ -36,13 +35,10 @@ exports.config = {
         userList: 'specs/userListSpec.js'
 
     },
-    allScriptsTimeout: 60000,
 
     // Options to be passed to Jasmine-node.
     jasmineNodeOpts: {
         showColors: true, // Use colors in the command line report.\
         defaultTimeoutInterval: 60000
     },
-
-}
-;
+};

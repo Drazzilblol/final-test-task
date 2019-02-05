@@ -39,13 +39,23 @@ let userListPage = function () {
         editLastUserButton.click();
     };
 
-    this.isUserExist = function (text) {
-        return userListTable.all(by.cssContainingText('td', text))
-            .count()
-            .then(function (size) {
-                return size > 0;
-            });
+    this.isUserExist = function (userName) {
+        if (typeof userName === "string") {
+            return isUserListContainUser(userName);
+        } else {
+            return userName.then(function (text) {
+                return isUserListContainUser(text);
+            })
+        }
     };
+
+    let isUserListContainUser = function (userName) {
+        return userList.map(function (element) {
+            return getRowText(element.all(by.tagName('td')).first());
+        }).then(function (array) {
+            return array.includes(userName);
+        })
+    }
 };
 
 module.exports = new userListPage();
