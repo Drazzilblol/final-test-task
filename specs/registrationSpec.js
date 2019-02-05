@@ -5,7 +5,7 @@ let registrationData = require('../fixtures/data.json');
 
 describe('Check user registration form cleaning', function () {
     beforeAll(function () {
-        navigator.startApp();
+        navigator.goToIndexPage();
     });
 
     it('Fill Name, Address, Email fields', function () {

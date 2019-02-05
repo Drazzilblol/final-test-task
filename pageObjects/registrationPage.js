@@ -25,7 +25,6 @@ let registrationPage = function () {
         button.click()
     };
 
-
     this.resetButtonClick = function () {
         buttonClick(resetButton);
     };
